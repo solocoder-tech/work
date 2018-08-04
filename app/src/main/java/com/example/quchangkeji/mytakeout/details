@@ -1,0 +1,11 @@
+1.整体框架思想  MVP  采用dagger2隔离View和Presenter层和View层,将业务逻辑和界面逻辑分离
+
+
+2.网络框架
+  Retrofit + RxJava + Gson
+  *2.1  Retrofit 2.0的使用
+  
+
+3.数据库  采用第三方
+
+
