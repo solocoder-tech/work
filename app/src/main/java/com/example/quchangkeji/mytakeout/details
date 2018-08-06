@@ -13,4 +13,31 @@
 4.github和sourceTree的关联
    zhuwujing726@163.com    zhuwujing726
 
+5.ButterKnife注意事项
+    1、在Activity 类中绑定 ：ButterKnife.bind(this);必须在setContentView();之后绑定；且父类bind绑定后，子类不需要再bind。
+    2、在非Activity 类（eg：Fragment、ViewHold）中绑定： ButterKnife.bind(this，view);这里的this不能替换成getActivity（）。
+    3、在Activity中不需要做解绑操作，在Fragment 中必须在onDestroyView()中做解绑操作。
+    4、使用ButterKnife修饰的方法和控件，不能用private or static 修饰，否则会报错。错误: @BindView fields must not be private or static. (com.zyj.wifi.ButterknifeActivity.button1)
+    5、setContentView()不能通过注解实现。（其他的有些注解框架可以）
+    6、使用Activity为根视图绑定任意对象时，如果你使用类似MVC的设计模式你可以在Activity 调用ButterKnife.bind(this, activity)，来绑定Controller。
+    7、使用ButterKnife.bind(this，view)绑定一个view的子节点字段。如果你在子View的布局里或者自定义view的构造方法里 使用了inflate,你可以立刻调用此方法。或者，从XML inflate来的自定义view类型可以在onFinishInflate回调方法中使用它。
+
+6.沉浸式
+  需要处理4.4以下版本、4.4、5.0以上版本，创建：values-v19,values-v21
+  Values:
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  </style>
+  values-v19:
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="android:windowTranslucentStatus">true</item>
+      <item name="android:windowTranslucentNavigation">true</item>
+  </style>
+  values-v21:
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="android:windowTranslucentStatus">false</item>
+      <item name="android:windowTranslucentNavigation">true</item>
+      <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+      <item name="android:statusBarColor">@android:color/transparent</item>
+  </style>
+
 
