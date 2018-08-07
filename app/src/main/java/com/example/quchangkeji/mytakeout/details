@@ -13,6 +13,7 @@
 4.github和sourceTree的关联
    zhuwujing726@163.com    zhuwujing726
 
+
 5.ButterKnife注意事项
     1、在Activity 类中绑定 ：ButterKnife.bind(this);必须在setContentView();之后绑定；且父类bind绑定后，子类不需要再bind。
     2、在非Activity 类（eg：Fragment、ViewHold）中绑定： ButterKnife.bind(this，view);这里的this不能替换成getActivity（）。
@@ -39,5 +40,7 @@
       <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
       <item name="android:statusBarColor">@android:color/transparent</item>
   </style>
+
+ 7.主页ViewPager+Fragment  和底部Button的联动
 
 

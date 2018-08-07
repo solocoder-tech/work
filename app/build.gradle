@@ -37,9 +37,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     /*Gson和Retrofit的关联*/
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-
     //ButterKnife
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
+    compile 'com.android.support:recyclerview-v7:25.2.0'
 }

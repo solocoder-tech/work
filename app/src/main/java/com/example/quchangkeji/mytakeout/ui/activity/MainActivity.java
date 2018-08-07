@@ -1,6 +1,9 @@
 package com.example.quchangkeji.mytakeout.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -8,6 +11,14 @@ import android.widget.LinearLayout;
 
 import com.example.quchangkeji.mytakeout.R;
 import com.example.quchangkeji.mytakeout.ui.base.BaseActivity;
+import com.example.quchangkeji.mytakeout.ui.base.SimpleFragment;
+import com.example.quchangkeji.mytakeout.ui.fragment.HomeFragment;
+import com.example.quchangkeji.mytakeout.ui.fragment.MeFragment;
+import com.example.quchangkeji.mytakeout.ui.fragment.MoreFragment;
+import com.example.quchangkeji.mytakeout.ui.fragment.OrderFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +30,8 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.item_container)
     LinearLayout mItemContainer;
 
+    private List<Fragment> mFragments;
+
     @Override
     public int getContentLayoutId() {
         return R.layout.activity_main;
@@ -26,9 +39,29 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        mFragments = new ArrayList<>();
+        //创建测试的Fragment
+//        builderFragment("首页");
+//        builderFragment("订单");
+//        builderFragment("个人");
+//        builderFragment("更多");
+        mFragments.add(new HomeFragment());//new 的时候没有走fragment的生命周期,在replace的时候走
+        mFragments.add(new OrderFragment());
+        mFragments.add(new MeFragment());
+        mFragments.add(new MoreFragment());
+
+
         setLisenters();
         //初始状态
         onClickLisenter.onClick(mItemContainer.getChildAt(0));
+    }
+
+    private void builderFragment(String title) {
+        SimpleFragment simpleFragment = new SimpleFragment();
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        simpleFragment.setArguments(args);
+        mFragments.add(simpleFragment);
     }
 
     /**
@@ -49,18 +82,35 @@ public class MainActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             int indexOfChild = mItemContainer.indexOfChild(v);
-            for (int i = 0; i < mItemContainer.getChildCount(); i++) {
-                if (indexOfChild == i) {
-                    mItemContainer.getChildAt(i).setEnabled(false);
-                    //自己的子孙View也不可点击
-                    setEnable(mItemContainer.getChildAt(i), false);
-                } else {
-                    mItemContainer.getChildAt(i).setEnabled(true);
-                    setEnable(mItemContainer.getChildAt(i), true);
-                }
-            }
+            changeUI(indexOfChild);
+            setFragments(indexOfChild);
         }
     };
+
+    /**
+     * 根据点击Item,更改UI
+     *
+     * @param indexOfChild
+     */
+    private void changeUI(int indexOfChild) {
+        for (int i = 0; i < mItemContainer.getChildCount(); i++) {
+            if (indexOfChild == i) {
+                mItemContainer.getChildAt(i).setEnabled(false);
+                //自己的子孙View也不可点击
+                setEnable(mItemContainer.getChildAt(i), false);
+            } else {
+                mItemContainer.getChildAt(i).setEnabled(true);
+                setEnable(mItemContainer.getChildAt(i), true);
+            }
+        }
+    }
+
+    private void setFragments(int indexOfChild) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction beginTransaction = fragmentManager.beginTransaction();
+        beginTransaction.replace(R.id.fragment_container, mFragments.get(indexOfChild));
+        beginTransaction.commit();
+    }
 
     /**
      * 递归遍历子孙View

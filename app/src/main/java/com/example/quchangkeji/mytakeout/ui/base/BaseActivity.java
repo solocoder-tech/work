@@ -3,6 +3,7 @@ package com.example.quchangkeji.mytakeout.ui.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
@@ -11,7 +12,7 @@ import butterknife.ButterKnife;
  * Created by zhuwujing on 2018/8/4.
  */
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
