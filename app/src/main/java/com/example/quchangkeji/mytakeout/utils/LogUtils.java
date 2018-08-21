@@ -3,6 +3,8 @@ package com.example.quchangkeji.mytakeout.utils;
 import android.animation.PropertyValuesHolder;
 import android.util.Log;
 
+import java.util.List;
+
 /**
  * Created by zhuwujing on 2018/8/7.
  */
@@ -26,6 +28,18 @@ public class LogUtils {
     public static void e(String tag, String msg) {
         if (isDebugger) {
             Log.e(tag, msg);
+        }
+    }
+
+    public static <T> void printList(List<T> list) {
+        if (isDebugger) {
+            if (list == null) {
+                sysout("输入的集合为空");
+            } else {
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println(list.get(i));
+                }
+            }
         }
     }
 }

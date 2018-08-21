@@ -1,4 +1,4 @@
-package com.example.quchangkeji.mytakeout.ui.base;
+package com.example.quchangkeji.mytakeout.base;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentLayoutId());
         ButterKnife.bind(this);
+        AppManager.getInstance().addActivity(this);
         init();
     }
 
@@ -36,5 +37,11 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getInstance().finishActivity(this);
     }
 }

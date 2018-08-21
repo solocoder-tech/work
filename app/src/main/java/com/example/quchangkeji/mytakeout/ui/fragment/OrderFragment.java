@@ -1,7 +1,7 @@
 package com.example.quchangkeji.mytakeout.ui.fragment;
 
 import com.example.quchangkeji.mytakeout.R;
-import com.example.quchangkeji.mytakeout.ui.base.BaseFragment;
+import com.example.quchangkeji.mytakeout.base.BaseFragment;
 
 /**
  * Created by zhuwujing on 2018/8/7.

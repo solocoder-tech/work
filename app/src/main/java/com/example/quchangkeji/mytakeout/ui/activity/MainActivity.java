@@ -10,8 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.example.quchangkeji.mytakeout.R;
-import com.example.quchangkeji.mytakeout.ui.base.BaseActivity;
-import com.example.quchangkeji.mytakeout.ui.base.SimpleFragment;
+import com.example.quchangkeji.mytakeout.base.BaseActivity;
+import com.example.quchangkeji.mytakeout.base.SimpleFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.HomeFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.MeFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.MoreFragment;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
@@ -40,28 +39,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init() {
         mFragments = new ArrayList<>();
-        //创建测试的Fragment
-//        builderFragment("首页");
-//        builderFragment("订单");
-//        builderFragment("个人");
-//        builderFragment("更多");
         mFragments.add(new HomeFragment());//new 的时候没有走fragment的生命周期,在replace的时候走
         mFragments.add(new OrderFragment());
         mFragments.add(new MeFragment());
         mFragments.add(new MoreFragment());
-
-
         setLisenters();
         //初始状态
         onClickLisenter.onClick(mItemContainer.getChildAt(0));
-    }
-
-    private void builderFragment(String title) {
-        SimpleFragment simpleFragment = new SimpleFragment();
-        Bundle args = new Bundle();
-        args.putString("title", title);
-        simpleFragment.setArguments(args);
-        mFragments.add(simpleFragment);
     }
 
     /**
