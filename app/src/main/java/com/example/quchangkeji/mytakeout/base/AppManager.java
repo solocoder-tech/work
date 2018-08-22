@@ -1,7 +1,9 @@
 package com.example.quchangkeji.mytakeout.base;
 
 import android.app.Activity;
+import android.os.Process;
 
+import java.lang.ref.WeakReference;
 import java.util.Stack;
 
 /**
@@ -30,7 +32,7 @@ public class AppManager {
         return mAppManager;
     }
 
-    private Stack<Activity> mActivityStack = new Stack<>();
+    private Stack<WeakReference<Activity>> mActivityStack = new Stack<>();
 
     /**
      * 添加
@@ -39,19 +41,18 @@ public class AppManager {
      */
     public void addActivity(Activity activity) {
         if (mActivityStack != null) {
-            mActivityStack.add(activity);
+            mActivityStack.add(new WeakReference<Activity>(activity));
         }
     }
 
     /**
      * 删除当前activity,及栈顶元素
-     *
-     * @param activity
      */
-    public void finishActivity(Activity activity) {
+    public void finishActivity() {
         if (mActivityStack != null && mActivityStack.size() > 0) {
-            Activity popActivity = mActivityStack.pop();
-            activity.finish();
+            Activity popActivity = mActivityStack.pop().get();
+            popActivity.finish();
+            mActivityStack.remove(popActivity);
         }
     }
 
@@ -61,7 +62,7 @@ public class AppManager {
     public void finishAllActivity() {
         if (mActivityStack != null) {
             for (int i = mActivityStack.size() - 1; i >= 0; i--) {
-                Activity activity = mActivityStack.get(i);
+                Activity activity = mActivityStack.get(i).get();
                 activity.finish();
                 mActivityStack.remove(i);
             }
@@ -69,13 +70,21 @@ public class AppManager {
     }
 
     /**
+     * 退出app,推出前要先关闭所有activity
+     */
+
+    public void quitApp() {
+        android.os.Process.killProcess(Process.myPid());
+    }
+
+    /**
      * 删除指定元素
      */
-    public void finishTargetActivity(Activity target){
-        if (mActivityStack != null){
+    public void finishTargetActivity(Activity target) {
+        if (mActivityStack != null) {
             for (int i = mActivityStack.size() - 1; i >= 0; i--) {
-                Activity activity = mActivityStack.get(i);
-                if (target.getClass().getName().equals(activity.getClass().getName())){
+                Activity activity = mActivityStack.get(i).get();
+                if (target.getClass().getName().equals(activity.getClass().getName())) {
                     activity.finish();
                     mActivityStack.remove(i);
                 }

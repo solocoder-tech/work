@@ -2,6 +2,8 @@ package com.example.quchangkeji.mytakeout.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
@@ -14,12 +16,20 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends FragmentActivity {
 
+    protected Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            BaseActivity.this.handleMessage(msg);
+        }
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.getInstance().addActivity(this);
         setContentView(getContentLayoutId());
         ButterKnife.bind(this);
-        AppManager.getInstance().addActivity(this);
         init();
     }
 
@@ -35,6 +45,14 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     protected abstract void init();
 
+    /**
+     * 子类完成,但是不一定要完成
+     *
+     * @param msg
+     */
+    protected void handleMessage(Message msg) {
+    }
+
     protected void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
@@ -42,6 +60,9 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AppManager.getInstance().finishActivity(this);
+    }
+
+    public void finishActivity() {
+        AppManager.getInstance().finishActivity();
     }
 }

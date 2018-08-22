@@ -1,6 +1,5 @@
 package com.example.quchangkeji.mytakeout.ui.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.example.quchangkeji.mytakeout.R;
 import com.example.quchangkeji.mytakeout.base.BaseActivity;
-import com.example.quchangkeji.mytakeout.base.SimpleFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.HomeFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.MeFragment;
 import com.example.quchangkeji.mytakeout.ui.fragment.MoreFragment;
