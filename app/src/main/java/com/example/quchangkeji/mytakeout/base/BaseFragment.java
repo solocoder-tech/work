@@ -37,7 +37,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 子类选择性实现
      */
-    private void initDatas() {
+    protected void initDatas() {
 
     }
 
