@@ -1,4 +1,4 @@
-package com.example.quchangkeji.mytakeout.utils;
+package com.example.quchangkeji.mytakeout.ui.views;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

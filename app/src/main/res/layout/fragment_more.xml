@@ -5,10 +5,9 @@
               android:orientation="vertical"
     >
 
-    <TextView
+    <com.example.quchangkeji.mytakeout.ui.views.ChangeView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="更多"
         />
 </LinearLayout>
