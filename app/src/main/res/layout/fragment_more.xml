@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.quchangkeji.mytakeout.ui.views.BitmapShaderView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <com.example.quchangkeji.mytakeout.ui.views.ShadowLayerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center" />
 </LinearLayout>
