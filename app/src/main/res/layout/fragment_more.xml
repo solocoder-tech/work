@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.quchangkeji.mytakeout.ui.views.ShadowLayerView
+    <com.example.mytakeout.ui.views.PortDuffXfermode
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center" />
