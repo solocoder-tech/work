@@ -124,6 +124,5 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
 
     @Override
     public void OnSuccess(HttpResponse body) {
-        LogUtils.sysout("----" + body.getData());
     }
 }

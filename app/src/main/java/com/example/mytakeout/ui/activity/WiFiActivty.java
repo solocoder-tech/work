@@ -1,11 +1,16 @@
 package com.example.mytakeout.ui.activity;
 
+import android.net.wifi.ScanResult;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.mytakeout.R;
 import com.example.mytakeout.base.BaseActivity;
+import com.example.mytakeout.modle.net.bean.EventScanResult;
+import com.example.mytakeout.utils.LogUtils;
 import com.example.mytakeout.wifi.WifiUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,13 +28,19 @@ public class WiFiActivty extends BaseActivity {
 
     @Override
     protected void initViews() {
-        setCustomView(R.layout.activity_wifi, true);
+        setCustomView(R.layout.activity_wifi, true,"WIFI");
         ButterKnife.bind(this);
+
     }
 
     @Override
     protected void initDatas() {
         mWifiUtils = WifiUtils.getWifiUtils();
+    }
+
+    @Override
+    protected void initEvents() {
+
     }
 
 
@@ -47,5 +58,23 @@ public class WiFiActivty extends BaseActivity {
                 mWifiUtils.startScan();
                 break;
         }
+    }
+
+    public void getEventMsg(EventScanResult eventScanResult) {
+        List<ScanResult> scanResults = eventScanResult.getScanResults();
+        for (ScanResult scanResult : scanResults) {
+            StringBuffer sb = new StringBuffer();
+            sb.append("ssid=" + scanResult.SSID + "\n");
+            sb.append("capabilities=" + scanResult.capabilities + "\n");
+            sb.append("BSSID=" + scanResult.BSSID + "\n");
+            sb.append("frequency=" + scanResult.frequency + "");
+            LogUtils.e(sb.toString());
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

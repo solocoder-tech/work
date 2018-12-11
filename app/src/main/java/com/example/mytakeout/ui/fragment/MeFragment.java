@@ -1,29 +1,24 @@
 package com.example.mytakeout.ui.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.mytakeout.R;
 import com.example.mytakeout.adapter.MeAdapter;
 import com.example.mytakeout.adapter.RVItemClickLisenter;
 import com.example.mytakeout.base.BaseFragment;
+import com.example.mytakeout.ui.activity.LeakCanaryActivity;
+import com.example.mytakeout.ui.activity.RetrofitActivity;
+import com.example.mytakeout.ui.activity.ToastActivity;
 import com.example.mytakeout.ui.activity.WiFiActivty;
-import com.example.mytakeout.utils.LogUtils;
 import com.example.mytakeout.wifi.WifiUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by zhuwujing on 2018/8/7.
@@ -52,8 +47,13 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
         mDatas = new ArrayList<>();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mDatas.add("WIFI");
+        mDatas.add("Retrofit");
+        mDatas.add("Toast");
+        mDatas.add("LeakCanary");
         MeAdapter adapter = new MeAdapter(mDatas, getActivity());
         adapter.setRVItemClickLisenter(this);
+        //添加默认的分割线
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(adapter);
     }
 
@@ -62,6 +62,15 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
         switch (position) {
             case 0:
                 startActivity(new Intent(getActivity(), WiFiActivty.class));
+                break;
+            case 1:
+                startActivity(new Intent(getActivity(), RetrofitActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(getActivity(),ToastActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(getActivity(),LeakCanaryActivity.class));
                 break;
         }
     }

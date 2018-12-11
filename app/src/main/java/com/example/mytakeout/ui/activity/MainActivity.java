@@ -59,6 +59,11 @@ public class MainActivity extends BaseActivity {
         MainActivityPermissionsDispatcher.requestLocationWithCheck(this);
     }
 
+    @Override
+    protected void initEvents() {
+
+    }
+
     // 单个权限
     @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     public void requestLocation() {

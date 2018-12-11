@@ -74,6 +74,7 @@ public class AppManager {
      */
 
     public void quitApp() {
+        finishAllActivity();
         android.os.Process.killProcess(Process.myPid());
     }
 

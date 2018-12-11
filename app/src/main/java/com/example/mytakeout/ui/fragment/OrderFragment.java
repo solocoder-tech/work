@@ -32,7 +32,6 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     protected void init() {
-
     }
 
     @OnClick({R.id.btn_test})
@@ -42,18 +41,18 @@ public class OrderFragment extends BaseFragment {
                 //一个app中打开另一个app
                 PackageManager packageManager = getActivity().getPackageManager();
                 String targetPakage = "com.inmotion.sweeprobot.mbot";
-                if (checkPackInfo(targetPakage)) {
-                    Intent intent = packageManager.getLaunchIntentForPackage(targetPakage);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getActivity(), "没有安装" + targetPakage, Toast.LENGTH_SHORT).show();
-                }
+//                if (checkPackInfo(targetPakage)) {
+//                    Intent intent = packageManager.getLaunchIntentForPackage(targetPakage);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(getActivity(), "没有安装" + targetPakage, Toast.LENGTH_SHORT).show();
+//                }
                 //一个app中打开另一个app的指定Activity
-//                Intent intent = new Intent(Intent.ACTION_MAIN);
-//                //前提：知道要跳转应用的包名、类名
-//                ComponentName componentName = new ComponentName("com.inmotion.sweeprobot.mbot", "com.inmotion.sweeprobot.mbot.Module.Homepage.SplashActivity");
-//                intent.setComponent(componentName);
-//                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                //前提：知道要跳转应用的包名、类名
+                ComponentName componentName = new ComponentName("com.inmotion.sweeprobot.mbot", "com.inmotion.sweeprobot.mbot.Module.Homepage.HomepageActivity");
+                intent.setComponent(componentName);
+                startActivity(intent);
                 break;
         }
     }

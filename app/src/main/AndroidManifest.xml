@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!--myToast-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -31,7 +34,7 @@
             android:name=".ui.activity.WiFiActivty"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".wifi.WifiBroadcastReceiver">
+        <receiver android:name="com.example.zhu.ldwifimanager.WifiBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
                 <action android:name="android.net.wifi.SCAN_RESULTS" />
@@ -39,6 +42,16 @@
                 <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".ui.activity.RetrofitActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ToastActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.activity.LeakCanaryActivity" />
+
     </application>
 
 </manifest>

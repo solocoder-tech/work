@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\myproject\\wIFIHostDemo\\build\\intermediates\\res\\merged\\debug\\anim\\loading_anim.xml",
+        "source": "D:\\myproject\\wIFIHostDemo\\src\\main\\res\\anim\\loading_anim.xml"
+    },
+    {
+        "merged": "D:\\myproject\\wIFIHostDemo\\build\\intermediates\\res\\merged\\debug\\anim\\list_anim.xml",
+        "source": "D:\\myproject\\wIFIHostDemo\\src\\main\\res\\anim\\list_anim.xml"
+    }
+]

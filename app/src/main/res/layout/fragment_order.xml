@@ -10,6 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:text="跳转到小狗" />
+        android:text="跳转到MBOT" />
 
 </RelativeLayout>

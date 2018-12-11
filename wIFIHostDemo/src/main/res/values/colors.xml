@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="lucency">#00000000</color>
+    <color name="drap_bar_word_color">#ff3e7ec8</color>
+    <color name="gray">#ff888888</color>
+    <color name="blue">#ff270cf7</color>
+    <color name="update_blue">#ff3e81c8</color>
+</resources>
