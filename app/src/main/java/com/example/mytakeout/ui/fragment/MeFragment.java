@@ -8,12 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import com.example.mytakeout.R;
 import com.example.mytakeout.adapter.MeAdapter;
 import com.example.mytakeout.adapter.RVItemClickLisenter;
+import com.example.mytakeout.anim.CustomAnimal;
 import com.example.mytakeout.base.BaseFragment;
 import com.example.mytakeout.ui.activity.LeakCanaryActivity;
 import com.example.mytakeout.ui.activity.RetrofitActivity;
 import com.example.mytakeout.ui.activity.ToastActivity;
-import com.example.mytakeout.ui.activity.WiFiActivty;
-import com.example.mytakeout.wifi.WifiUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,7 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
     public void rvItemClick(Object o, int position) {
         switch (position) {
             case 0:
-                startActivity(new Intent(getActivity(), WiFiActivty.class));
+//                startActivity(new Intent(getActivity(), WiFiActivty.class));
                 break;
             case 1:
                 startActivity(new Intent(getActivity(), RetrofitActivity.class));

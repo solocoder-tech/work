@@ -33,6 +33,12 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -65,5 +71,8 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
     //debug版本才有，release版本没有
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
-
+    //compile(name:'aar名字', ext:'aar')
+    compile(name: 'ldmaplib-release', ext: 'aar')
+    compile 'net.jpountz.lz4:lz4:1.3.0'
+    compile 'com.google.code.gson:gson:2.8.5'
 }

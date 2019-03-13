@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/syn_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="同步get" />
+
+    <Button
+        android:id="@+id/syn_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="同步post" />
+
+    <Button
+        android:id="@+id/syn_post_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="同步form" />
+
+    <Button
+        android:id="@+id/asyn_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="异步get" />
+
+    <Button
+        android:id="@+id/asyn_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="异步post" />
+
+    <Button
+        android:id="@+id/asyn_post_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="异步form" />
+</LinearLayout>

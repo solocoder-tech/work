@@ -4,8 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.mytakeout.ui.views.PortDuffXfermode
+    <!--<com.example.mytakeout.ui.views.PortDuffXfermode-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:gravity="center" />-->
+    <Button
+        android:id="@+id/btn_anim"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="hahahh"
+        android:textAllCaps="false" />
 </LinearLayout>

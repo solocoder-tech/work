@@ -30,18 +30,18 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.activity.WiFiActivty"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".ui.activity.WiFiActivty"-->
+            <!--android:screenOrientation="portrait" />-->
 
-        <receiver android:name="com.example.zhu.ldwifimanager.WifiBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.net.wifi.SCAN_RESULTS" />
-                <action android:name="android.net.wifi.supplicant.STATE_CHANGE" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name="com.example.zhu.ldwifimanager.WifiBroadcastReceiver">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />-->
+                <!--<action android:name="android.net.wifi.SCAN_RESULTS" />-->
+                <!--<action android:name="android.net.wifi.supplicant.STATE_CHANGE" />-->
+                <!--<action android:name="android.net.wifi.STATE_CHANGE" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
 
         <activity
             android:name=".ui.activity.RetrofitActivity"

@@ -1,2 +1,2 @@
-include ':app', ':ldwifimanager'
-include ':wIFIHostDemo'
+include ':app', ':ldmaplib-release', ':net'
+
