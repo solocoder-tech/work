@@ -5,7 +5,7 @@
 
 
 #define TAG    "xxxx"
-#define LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)
+//#define LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)
 extern "C" JNIEXPORT jstring
 
 
@@ -21,9 +21,9 @@ Java_com_example_ld_cmakedemo_JniUtils_stringFromJNI(
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_mytakeout_JniUtils_erodeContourBox(JNIEnv *env, jobject instance,
-                                                                 jbyteArray mapData_, jint OrgW,
-                                                                 jint OrgH, jfloat xMin,
-                                                                 jfloat yMin, jfloat resolution) {
+                                                    jbyteArray mapData_, jint OrgW,
+                                                    jint OrgH, jfloat xMin,
+                                                    jfloat yMin, jfloat resolution) {
     jbyte *mapData = env->GetByteArrayElements(mapData_, NULL);
 
     unsigned char *chars = NULL;
@@ -53,40 +53,40 @@ Java_com_example_mytakeout_JniUtils_erodeContourBox(JNIEnv *env, jobject instanc
 //间","id":2,"tag":"diningroom2","vertexs":[[0,0],[0,10],[-10,10],
 //[-10,0]],"active":"forbid","mode":"default"}]
 
-static void BuildSingleVectorString(std::vector<_PointI32>,char* outBuf,int mask)
-{
+static void BuildSingleVectorString(std::vector<_PointI32>, char *outBuf, int mask) {
 
 
 }
 
-static int GetVectorString(std::vector<std::vector<_PointI32> > vecs, char* outBuf, int maxSize)
-{
+static int GetVectorString(std::vector<std::vector<_PointI32> > vecs, char *outBuf, int maxSize) {
     size_t vecSize = vecs.size();
-    if(vecSize > 15) { vecSize = 15; }
-    char* p = outBuf;
+    if (vecSize > 15) { vecSize = 15; }
+    char *p = outBuf;
     int len = 0;
-    len = sprintf(p,"[");
-    p+=len;
-    for(int i=0;i<vecSize;i++)
-    {
+    len = sprintf(p, "[");
+    p += len;
+    for (int i = 0; i < vecSize; i++) {
         std::vector<_PointI32> single = vecs[i];
-        if(i!=0)
-        {
-            len = sprintf(p,",");p+=len;
+        if (i != 0) {
+            len = sprintf(p, ",");
+            p += len;
         }
-        len = sprintf(p,"{\"name\":\"auto_%d\",\"id\":%d,\"vertexs\":[",i,100+i);p+=len;
-        for(int j=0;j<single.size();j++)
-        {
-            if(j != 0)
-            {
-                len = sprintf(p,",");p+=len;
+        len = sprintf(p, "{\"name\":\"auto_%d\",\"id\":%d,\"vertexs\":[", i, 100 + i);
+        p += len;
+        for (int j = 0; j < single.size(); j++) {
+            if (j != 0) {
+                len = sprintf(p, ",");
+                p += len;
             }
-            len = sprintf(p,"[%d,%d]",single[j].x,single[j].y);p+=len;
+            len = sprintf(p, "[%d,%d]", single[j].x, single[j].y);
+            p += len;
         }
-        len = sprintf(p,"]}");p+=len;
+        len = sprintf(p, "]}");
+        p += len;
     }
-    len = sprintf(p,"]"); p+=len;
-    LOGE("====== %d:%s",(p-outBuf),outBuf);
+    len = sprintf(p, "]");
+    p += len;
+//    LOGE("====== %d:%s", (p - outBuf), outBuf);
     return len;
 }
 
@@ -111,7 +111,7 @@ static int GetVectorString(std::vector<std::vector<_PointI32> > vecs, char* outB
 //    return rtn;
 //}
 
-static jstring charTojstring(JNIEnv* env, const char* pat) {
+static jstring charTojstring(JNIEnv *env, const char *pat) {
     return (env)->NewStringUTF(pat);  //直接调用NewStringUTF方法
 //    //定义java String类 strClass
 //    jclass strClass = (env)->FindClass("Ljava/lang/String");
@@ -130,15 +130,23 @@ static jstring charTojstring(JNIEnv* env, const char* pat) {
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_example_mytakeout_JniUtils_mapcutHough(JNIEnv *env, jobject instance,
-                                                             jbyteArray mapData_, jint OrgW,
-                                                             jint OrgH, jfloat xMin, jfloat yMin,
-                                                             jfloat resolution) {
+                                                jbyteArray mapData_, jint OrgW,
+                                                jint OrgH, jfloat xMin, jfloat yMin,
+                                                jfloat resolution) {
     jbyte *mapData = env->GetByteArrayElements(mapData_, NULL);
     int mapLen = env->GetArrayLength(mapData_);
     // TODO
-    std::vector<std::vector<_PointI32> > rets = MapCut_Hough((uint8_t*)mapData, OrgW, OrgH, xMin, yMin, resolution);
-    char outBuf[2*1024];
-    int outLen = GetVectorString(rets,outBuf,sizeof(outBuf));
+    std::vector<std::vector<_PointI32> > rets = MapCut_Hough((uint8_t *) mapData, OrgW, OrgH, xMin,
+                                                             yMin, resolution);
+    char outBuf[2 * 1024];
+    int outLen = GetVectorString(rets, outBuf, sizeof(outBuf));
     env->ReleaseByteArrayElements(mapData_, mapData, 0);
-    return charTojstring(env,outBuf);
+    return charTojstring(env, outBuf);
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_example_mytakeout_JniUtils_handlerImage
+        (JNIEnv *env) {
+    return env->NewStringUTF("1122");
 }

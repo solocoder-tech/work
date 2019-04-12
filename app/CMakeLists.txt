@@ -5,7 +5,9 @@
 # 设置cmake最小版本
 cmake_minimum_required(VERSION 3.4.1)
 SET(CMAKE_C_COMPILER g++)
+SET(CMAKE_BUILD_TYPE "Release")
 add_compile_options(-std=c++11)
+
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -16,7 +18,7 @@ add_compile_options(-std=c++11)
 # 配置so库信息
 add_library( # Sets the name of the library.
              # 设置编译出来的so包的名字. 不需要添加lib前缀
-             native-ld
+             native-ld-video
 
              # Sets the library as a shared library.
              # 设置为共享链接库. 有SHARED，STATIC两种可选
@@ -27,11 +29,14 @@ add_library( # Sets the name of the library.
              # Provides a relative path to your source file(s).
              # 设置源文件的相对路径，可将多个源文件进行编译
              #${native_srcs}
-             src/main/cpp/_ContourFinder.cpp
-             src/main/cpp/_hough.cpp
-             src/main/cpp/map_cut.cpp
-             src/main/cpp/native-lib.cpp
+             src/main/cpp/dewarpFishEyeImg.cpp
+             src/main/cpp/native-lib-video.cpp
               )
+
+# src/main/cpp/_ContourFinder.cpp
+#src/main/cpp/_hough.cpp
+#src/main/cpp/map_cut.cpp
+#src/main/cpp/native-lib.cpp
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -54,7 +59,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        # 指定被链接的库.
-                       native-ld
+                       native-ld-video
 
                        # Links the target library to the log library
                        # 链接log-lib到native-lib

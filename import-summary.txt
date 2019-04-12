@@ -7,14 +7,6 @@ The following files were *not* copied into the new Gradle project; you
 should evaluate whether these are still needed in your project and if
 so manually move them:
 
-* .idea\
-* .idea\WIFIHostDemo.iml
-* .idea\codeStyles\
-* .idea\codeStyles\Project.xml
-* .idea\encodings.xml
-* .idea\misc.xml
-* .idea\modules.xml
-* .idea\workspace.xml
 * ic_launcher-web.png
 * proguard-project.txt
 
@@ -28,17 +20,17 @@ the .jar file in your project was of an older version than the
 dependency we picked, which could render the project not compileable.
 You can disable the jar replacement in the import wizard and try again:
 
-android-support-v4.jar => com.android.support:support-v4:18.+
+android-support-v4.jar => com.android.support:support-v4:19.+
 
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => wIFIHostDemo\src\main\AndroidManifest.xml
-* assets\ => wIFIHostDemo\src\main\assets
-* res\ => wIFIHostDemo\src\main\res\
-* src\ => wIFIHostDemo\src\main\java\
+* AndroidManifest.xml => serverUDPTest\src\main\AndroidManifest.xml
+* assets\ => serverUDPTest\src\main\assets
+* res\ => serverUDPTest\src\main\res\
+* src\ => serverUDPTest\src\main\java\
 
 Missing Android Support Repository:
 -----------------------------------

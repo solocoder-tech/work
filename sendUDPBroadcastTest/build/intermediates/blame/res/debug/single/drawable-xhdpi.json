@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\myproject\\sendUDPBroadcastTest\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
+        "source": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\myproject\\sendUDPBroadcastTest\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_action_search.png",
+        "source": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\drawable-xhdpi\\ic_action_search.png"
+    }
+]

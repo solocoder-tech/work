@@ -108,12 +108,15 @@ public abstract class BaseActivity extends FragmentActivity {
      * @return
      */
     public void setCustomView(@LayoutRes int layRes, boolean hasTitle, String title) {
-        mContainer.addView(View.inflate(this, layRes, null));
         if (hasTitle) {
             titelRl.setVisibility(View.VISIBLE);
             titelCenterTv.setText(title);
+            mContainer.addView(View.inflate(this, layRes, null));
         } else {
             titelRl.setVisibility(View.GONE);
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams.topMargin = 50;
+            mContainer.addView(View.inflate(this, layRes, null), layoutParams);
         }
     }
 
