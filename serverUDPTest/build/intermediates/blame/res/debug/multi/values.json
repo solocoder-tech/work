@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\myproject\\serverUDPTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "F:\\mywork\\MyTakeout\\serverUDPTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\dimens.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\dimens.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 217
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 264
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 317
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -107,7 +107,7 @@
                     "endOffset": 608
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\styles.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -128,7 +128,7 @@
                     "endOffset": 768
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values\\styles.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,

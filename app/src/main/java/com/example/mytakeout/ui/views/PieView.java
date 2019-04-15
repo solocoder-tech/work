@@ -72,11 +72,12 @@ public class PieView extends View {
         super.onDraw(canvas);
         int cx = width / 2;
         int cy = height / 2;
-        canvas.drawCircle(cx, cy, radio, mPaint);
+//        canvas.drawCircle(cx, cy, radio, mPaint);
 
         if (valuses != null) {
             float total = getSum(valuses);
             RectF rectF = new RectF(0, 0, width, height);
+            canvas.drawRect(rectF, mPaint);
             mPaint.setStyle(Paint.Style.FILL);
             mStartAngle = 0;
             float sweepAngle = 0;
@@ -85,11 +86,32 @@ public class PieView extends View {
                 sweepAngle = valuses[i] / total * 360;
                 canvas.drawArc(rectF, mStartAngle, sweepAngle, true, mPaint);//单位是角度
                 //绘制短线
-                float startPosX = (float) (radio * Math.cos(sweepAngle / 2 + mStartAngle));
-                float startPosY = (float) (radio * Math.sin(sweepAngle / 2 + mStartAngle));
-                float endPosX = (float) (startPosX + lineLen * Math.cos(sweepAngle / 2 + mStartAngle));
-                float endPosY = (float) (startPosY + lineLen * Math.sin(sweepAngle / 2 + mStartAngle));
-                LogUtils.e("========" + startPosX + "--" + startPosY + "--" + endPosX + "--" + endPosY);
+                double angle = Math.toRadians(sweepAngle / 2 + mStartAngle);
+                float startPosX = 0;
+                float startPosY = 0;
+                float endPosX = 0;
+                float endPosY = 0;
+                if (angle >= 0 && angle < Math.PI / 2) {
+                    startPosX = (float) (width / 2 + width / 2 * Math.cos(angle));
+                    startPosY = (float) (width / 2 - width / 2 * Math.sin(angle));
+                    endPosX = (float) (startPosX + lineLen * Math.cos(angle));
+                    endPosY = (float) (startPosY - lineLen * Math.sin(angle));
+                } else if (angle >= Math.PI / 2 && angle < Math.PI) {
+                    startPosX = (float) (width / 2 - width / 2 * Math.cos(angle));
+                    startPosY = (float) (width / 2 - width / 2 * Math.sin(angle));
+                    endPosX = (float) (startPosX - lineLen * Math.cos(angle));
+                    endPosY = (float) (startPosY - lineLen * Math.sin(angle));
+                } else if (angle >= Math.PI && angle < 3 * Math.PI / 2) {
+                    startPosX = (float) (width / 2 - width / 2 * Math.cos(angle));
+                    startPosY = (float) (width / 2 + width / 2 * Math.sin(angle));
+                    endPosX = (float) (startPosX - lineLen * Math.cos(angle));
+                    endPosY = (float) (startPosY + lineLen * Math.sin(angle));
+                } else {
+                    startPosX = (float) (width / 2 + width / 2 * Math.cos(angle));
+                    startPosY = (float) (width / 2 + width / 2 * Math.sin(angle));
+                    endPosX = (float) (startPosX + lineLen * Math.cos(angle));
+                    endPosY = (float) (startPosY + lineLen * Math.sin(angle));
+                }
                 canvas.drawLine(startPosX, startPosY, endPosX, endPosY, mPaint);
 
                 mStartAngle += sweepAngle;

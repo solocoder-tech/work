@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\myproject\\sendUDPBroadcastTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+        "outputFile": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 95
                 },
                 "from": {
-                    "file": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
+                    "file": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 141
                 },
                 "from": {
-                    "file": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
+                    "file": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 185
                 },
                 "from": {
-                    "file": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
+                    "file": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\src\\main\\res\\values-large\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\myproject\\serverUDPTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+        "outputFile": "F:\\mywork\\MyTakeout\\serverUDPTest\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 187
                 },
                 "from": {
-                    "file": "D:\\myproject\\serverUDPTest\\src\\main\\res\\values-v11\\styles.xml",
+                    "file": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\values-v11\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
