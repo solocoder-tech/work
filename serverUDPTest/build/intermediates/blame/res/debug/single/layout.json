@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\myproject\\serverUDPTest\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\myproject\\serverUDPTest\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\myproject\\serverUDPTest\\build\\intermediates\\res\\merged\\debug\\layout\\activity_text.xml",
+        "source": "D:\\myproject\\serverUDPTest\\src\\main\\res\\layout\\activity_text.xml"
+    }
+]

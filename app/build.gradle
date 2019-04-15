@@ -12,6 +12,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        //使用CMake工具
         externalNativeBuild {
             cmake {
                 cppFlags "-frtti -fexceptions"
@@ -26,6 +27,7 @@ android {
         }
     }
 
+    //配置CMakeList.txt 路径
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
@@ -68,11 +70,12 @@ dependencies {
     //输出请求日志
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //LeakCanary  内存泄露工具
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
     //debug版本才有，release版本没有
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
     //compile(name:'aar名字', ext:'aar')
     compile(name: 'ldmaplib-release', ext: 'aar')
     compile 'net.jpountz.lz4:lz4:1.3.0'
     compile 'com.google.code.gson:gson:2.8.5'
+    compile project(':viewlib')
 }

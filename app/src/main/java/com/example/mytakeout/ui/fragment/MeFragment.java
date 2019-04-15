@@ -10,9 +10,10 @@ import com.example.mytakeout.adapter.MeAdapter;
 import com.example.mytakeout.adapter.RVItemClickLisenter;
 import com.example.mytakeout.anim.CustomAnimal;
 import com.example.mytakeout.base.BaseFragment;
-import com.example.mytakeout.ui.activity.LeakCanaryActivity;
+//import com.example.mytakeout.ui.activity.LeakCanaryActivity;
 import com.example.mytakeout.ui.activity.RetrofitActivity;
 import com.example.mytakeout.ui.activity.ToastActivity;
+import com.example.mytakeout.ui.activity.ViewsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
         mDatas.add("Retrofit");
         mDatas.add("Toast");
         mDatas.add("LeakCanary");
+        mDatas.add("自定义控件");
         MeAdapter adapter = new MeAdapter(mDatas, getActivity());
         adapter.setRVItemClickLisenter(this);
         //添加默认的分割线
@@ -69,7 +71,10 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
                 startActivity(new Intent(getActivity(),ToastActivity.class));
                 break;
             case 3:
-                startActivity(new Intent(getActivity(),LeakCanaryActivity.class));
+//                startActivity(new Intent(getActivity(),LeakCanaryActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(getActivity(), ViewsActivity.class));
                 break;
         }
     }

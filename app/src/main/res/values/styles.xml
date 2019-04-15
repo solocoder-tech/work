@@ -24,4 +24,8 @@
         <item name="android:progressDrawable">@drawable/progressbar_mini</item>
     </style>
 
+    <declare-styleable name="RectView">
+        <attr name="default_size" format="dimension" />
+    </declare-styleable>
+
 </resources>

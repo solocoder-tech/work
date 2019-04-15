@@ -6,8 +6,8 @@ import android.content.pm.ApplicationInfo;
 
 import com.example.mytakeout.utils.LogUtils;
 import com.example.mytakeout.utils.UIUtils;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.RefWatcher;
 
 
 /**
@@ -17,7 +17,7 @@ import com.squareup.leakcanary.RefWatcher;
 public class BaseApplication extends Application {
 
     public static Context mContext;
-    private RefWatcher refWatcher;
+//    private RefWatcher refWatcher;
 
     public static Context getContext() {
         return mContext;
@@ -29,23 +29,23 @@ public class BaseApplication extends Application {
         mContext = getApplicationContext();
 //        LeakCanary.install(this);
 
-        refWatcher = setupLeakCanary();
+//        refWatcher = setupLeakCanary();
 
         boolean apkDebugable = UIUtils.isApkDebugable(this);
         LogUtils.e("apkDebugable==" + apkDebugable);
     }
 
-    private RefWatcher setupLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return RefWatcher.DISABLED;
-        }
-        return LeakCanary.install(this);
-    }
+//    private RefWatcher setupLeakCanary() {
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return RefWatcher.DISABLED;
+//        }
+//        return LeakCanary.install(this);
+//    }
 
-    public static RefWatcher getRefWatcher(Context context) {
-        BaseApplication leakApplication = (BaseApplication) context.getApplicationContext();
-        return leakApplication.refWatcher;
-    }
+//    public static RefWatcher getRefWatcher(Context context) {
+//        BaseApplication leakApplication = (BaseApplication) context.getApplicationContext();
+//        return leakApplication.refWatcher;
+//    }
 
 
 }

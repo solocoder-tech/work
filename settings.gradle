@@ -1,2 +1,6 @@
 include ':app', ':ldmaplib-release'
 
+include ':app', ':ldmaplib-release', ':net', ':viewlib', ':basetestdemo'
+
+include ':sendUDPBroadcastTest'
+include ':serverUDPTest'
