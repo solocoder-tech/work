@@ -1,5 +1,6 @@
 package com.example.mytakeout.ui.fragment;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import com.example.mytakeout.MyBitmapFactory;
 import com.example.mytakeout.R;
 import com.example.mytakeout.base.BaseFragment;
+import com.example.mytakeout.ui.video.LdDecoder;
 import com.example.mytakeout.utils.LogUtils;
 import com.ldvideo.JniUtils;
 
@@ -20,9 +22,6 @@ import java.nio.ByteBuffer;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static java.lang.Math.PI;
-import static java.lang.Math.sin;
 
 /**
  * Created by zhuwujing on 2018/8/7.
@@ -35,10 +34,14 @@ public class OrderFragment extends BaseFragment {
     ImageView mImageView;
     @BindView(R.id.orignal_iv)
     ImageView orignal_iv;
+    @BindView(R.id.btn_video)
+    Button btnVideo;
+
     private byte[] mByteArray;
     private int inHeight;
     private int inWidth;
-    private int Radius = 511;
+    //    private int Radius = 511;
+    private int Radius = 480;
     private int outHeight;
     private int outWidth;
     private float downX;
@@ -84,10 +87,10 @@ public class OrderFragment extends BaseFragment {
 //        bmp.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
 //        mByteArray =  outputStream.toByteArray();
 
-        Log.e("size", bmp.getWidth() + "");
-        Log.e("size", bmp.getHeight() + "");
-        Log.e("size", mByteArray.length + "");
-        Log.e("size", 1280 * 960 * 3 + ""); //3686400
+//        Log.e("size", bmp.getWidth() + "");
+//        Log.e("size", bmp.getHeight() + "");
+//        Log.e("size", mByteArray.length + "");
+//        Log.e("size", 1280 * 960 * 3 + ""); //3686400
 
         orignal_iv.setImageBitmap(myBitmap);
 
@@ -103,7 +106,8 @@ public class OrderFragment extends BaseFragment {
         inWidth = bmp.getWidth();
 
         outHeight = Radius;
-        outWidth = (int) (Radius * sin(50 * PI / 180.0) * 2);
+//        outWidth = (int) (Radius * sin(50 * PI / 180.0) * 2);
+        outWidth = 640;
 
         mImageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -124,12 +128,12 @@ public class OrderFragment extends BaseFragment {
                             mAngle_y += (moveY - downY) * 0.3;
                         }
 
-                        float[] floats = mJniUtils.rectifyMap2(inWidth, inHeight, mAngle_y, 0, mAngle_x, outWidth, outHeight, 511);
+//                        float[] floats = mJniUtils.rectifyMap2(inWidth, inHeight, mAngle_y, 0, mAngle_x, outWidth, outHeight, 511);
                         LogUtils.e("imageview----------");
-                        byte[] cvremap = mJniUtils.cvremap(mByteArray, floats, inHeight, inWidth, outWidth, outHeight);
+//                        byte[] cvremap = mJniUtils.cvremap(mByteArray, floats, inHeight, inWidth, outWidth, outHeight);
 
-                        Bitmap myBitmap = MyBitmapFactory.createMyBitmap(cvremap, outWidth, outHeight);
-                        mImageView.setImageBitmap(myBitmap);
+//                        Bitmap myBitmap = MyBitmapFactory.createMyBitmap(cvremap, outWidth, outHeight);
+//                        mImageView.setImageBitmap(myBitmap);
 
                         downX = moveX;
                         downY = moveY;
@@ -155,7 +159,7 @@ public class OrderFragment extends BaseFragment {
         return options;
     }
 
-    @OnClick({R.id.btn_test})
+    @OnClick({R.id.btn_test, R.id.btn_video})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test:
@@ -175,11 +179,19 @@ public class OrderFragment extends BaseFragment {
 //                intent.setComponent(componentName);
 //                startActivity(intent);
 
-                LogUtils.e("imageview----------inHeight=" + inHeight + "===inWidth==" + inWidth + "==outHeight==" + outHeight + "==outWidth==" + outWidth);
-                float[] floats = mJniUtils.rectifyMap2(inWidth, inHeight, -30, 0, 75, outWidth, outHeight, 511);
-                LogUtils.e("imageview----------");
-                byte[] cvremap = mJniUtils.cvremap(mByteArray, floats, inHeight, inWidth, outWidth, outHeight);
-                if (cvremap != null){
+//                LogUtils.e("imageview----------inHeight=" + inHeight + "===inWidth==" + inWidth + "==outHeight==" + outHeight + "==outWidth==" + outWidth);
+//                float[] floats = mJniUtils.rectifyMap2(inWidth, inHeight, -30, 0, 75, outWidth, outHeight, 511);
+//                LogUtils.e("imageview----------");
+
+//                startActivity(new Intent(getActivity(), VideoActivity.class));
+//                startActivity(new Intent(getActivity(), GLVideoActivity.class));
+                new LdDecoder().startCodec(null);
+                break;
+            case R.id.btn_video:
+                long startTime = System.currentTimeMillis();
+                byte[] cvremap = mJniUtils.remap(mByteArray, 960, 1280, 700, 640);
+                LogUtils.e("time========" + (System.currentTimeMillis() - startTime));
+                if (cvremap != null) {
                     Log.e("----", cvremap[0] + "");
                     Bitmap myBitmap = MyBitmapFactory.createMyBitmap(cvremap, outWidth, outHeight);
                     mImageView.setImageBitmap(myBitmap);

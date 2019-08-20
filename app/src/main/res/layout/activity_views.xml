@@ -13,7 +13,13 @@
         android:id="@+id/pie_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <com.example.mytakeout.ui.views.MyImageView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:background="@color/gray" />
 
 
 </RelativeLayout>

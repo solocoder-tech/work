@@ -3,7 +3,7 @@
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/color_69774C">
+    android:background="@color/color_ff3190E8">
 
     <TextView
         android:id="@+id/replace_status_bar"
@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@color/color_69774C"
         android:text="标题"
         android:textColor="@color/color_white"
         android:textSize="26sp" />

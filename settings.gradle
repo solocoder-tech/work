@@ -1,4 +1,5 @@
-include ':app', ':ldmaplib-release', ':net', ':viewlib', ':basetestdemo'
+//通过include函数
+include ':app', ':ldmaplib-release', ':net', ':viewlib', ':basetestdemo', ':nativelibyuv', ':libyuv'
 
 include ':sendUDPBroadcastTest'
 include ':serverUDPTest'

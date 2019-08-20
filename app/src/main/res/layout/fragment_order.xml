@@ -11,7 +11,17 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="button" />
+        android:text="视频解码"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:text="透视"
+        android:textAllCaps="false" />
 
     <ImageView
         android:id="@+id/orignal_iv"
@@ -24,5 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
 
 </LinearLayout>

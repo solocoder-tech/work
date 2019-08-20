@@ -1,11 +1,13 @@
 package com.example.mytakeout.ui.activity;
 
 import android.Manifest;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -17,6 +19,7 @@ import com.example.mytakeout.ui.fragment.HomeFragment;
 import com.example.mytakeout.ui.fragment.MeFragment;
 import com.example.mytakeout.ui.fragment.MoreFragment;
 import com.example.mytakeout.ui.fragment.OrderFragment;
+import com.example.mytakeout.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +39,15 @@ public class MainActivity extends BaseActivity {
     LinearLayout mItemContainer;
 
     private List<Fragment> mFragments;
+    private int countExit = 0;
 
 
     @Override
     protected void initViews() {
-        setCustomView(R.layout.activity_main,false);
+        setCustomView(R.layout.activity_main, false);
         ButterKnife.bind(this);
+        LogUtils.e("cpu====" + Build.CPU_ABI);
+
     }
 
     @Override
@@ -65,7 +71,7 @@ public class MainActivity extends BaseActivity {
     }
 
     // 单个权限
-    @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+    @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
     public void requestLocation() {
         toast("申请权限成功");
     }
@@ -139,5 +145,22 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == event.KEYCODE_BACK) {
+            countExit++;
+            if (countExit == 2) {
+                return super.onKeyDown(keyCode, event);
+            }
+            toast("再按一次退出");
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    countExit = 0;
+                }
+            }, 2000);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

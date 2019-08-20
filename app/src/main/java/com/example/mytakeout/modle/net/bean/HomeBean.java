@@ -1,4 +1,4 @@
-package com.example.quchangkeji.mytakeout.modle.net.bean;
+package com.example.mytakeout.modle.net.bean;
 
 /**
  * Created by zhuwujing on 2018/8/22.
@@ -14,4 +14,5 @@ public class HomeBean {
     public void setTitle(String title) {
         this.title = title;
     }
+
 }

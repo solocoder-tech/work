@@ -1,26 +1,21 @@
 package com.example.mytakeout.ui.fragment;
 
-import android.animation.ArgbEvaluator;
-import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.annotation.LayoutRes;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mytakeout.R;
 import com.example.mytakeout.adapter.HomeRvAdapter;
 import com.example.mytakeout.base.BaseFragment;
+import com.example.mytakeout.base.TitleConst;
+import com.example.mytakeout.modle.net.bean.HomeBean;
 import com.example.mytakeout.net.HttpResponse;
 import com.example.mytakeout.presenter.fragment.HomePresenterImpl;
-import com.example.mytakeout.ui.fragment.HomeFragmentView;
-import com.example.mytakeout.utils.LogUtils;
-import com.example.quchangkeji.mytakeout.modle.net.bean.HomeBean;
+import com.example.mytakeout.ui.activity.ViewPagerTestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +24,10 @@ import butterknife.BindView;
 
 /**
  * Created by zhuwujing on 2018/8/7.
+ * 首页
  */
 
-public class HomeFragment extends BaseFragment implements HomeFragmentView {
+public class HomeFragment extends BaseFragment implements HomeFragmentView, HomeRvAdapter.HomeTvAdapterLisenter {
     @BindView(R.id.rv_home)
     RecyclerView mRvHome;
     @BindView(R.id.srl_home)
@@ -46,7 +42,8 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
     int sumY = 0;//RecyclerView滑动的y的距离
 
     @Override
-    protected @LayoutRes int getResLayoutId() {
+    protected @LayoutRes
+    int getResLayoutId() {
         return R.layout.fragment_home;
     }
 
@@ -59,7 +56,9 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
             homeBean.setTitle("这是第" + i + "个条目");
             datas.add(homeBean);
         }
+        initItems(datas);
         HomeRvAdapter adapter = new HomeRvAdapter(getActivity(), datas);
+        adapter.setHomeTvAdapterLisenter(this);
         mRvHome.setAdapter(adapter);
 
         mSrlHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,20 +71,6 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                sumY += dy;
-//                LogUtils.sysout(dx + "==-----==" + dy + "---=" + sumY);
-                //0--250
-                ArgbEvaluator evaluator = new ArgbEvaluator();
-                float fraction = 0f;
-                if (sumY >= 0 && sumY <= 250) {
-                    fraction = sumY / 250.0f;
-                } else if (sumY > 250) {
-                    fraction = 1f;
-                } else {
-                    fraction = 0f;
-                }
-                int targetColor = (int) evaluator.evaluate(fraction, 0x553190E8, 0xFF3190E8);
-                mLlTitleContainer.setBackgroundColor(targetColor);
             }
 
             /**
@@ -113,6 +98,16 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
     }
 
     /**
+     * 初始化条目
+     *
+     * @param datas
+     */
+    private void initItems(List<HomeBean> datas) {
+        HomeBean homeBean = datas.get(0);
+        homeBean.setTitle(TitleConst.TITLE_VIEWPAGER);
+    }
+
+    /**
      * 加载数据
      */
     @Override
@@ -124,5 +119,19 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView {
 
     @Override
     public void OnSuccess(HttpResponse body) {
+    }
+
+    @Override
+    public void onItemClick(HomeBean homeBean) {
+        Intent intent = null;
+        switch (homeBean.getTitle()) {
+            case TitleConst.TITLE_VIEWPAGER:
+                intent = new Intent(getActivity(), ViewPagerTestActivity.class);
+                intent.putExtra("title",TitleConst.TITLE_VIEWPAGER);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 }

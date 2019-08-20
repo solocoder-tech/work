@@ -13,6 +13,7 @@ import com.example.mytakeout.base.BaseFragment;
 //import com.example.mytakeout.ui.activity.LeakCanaryActivity;
 import com.example.mytakeout.ui.activity.RetrofitActivity;
 import com.example.mytakeout.ui.activity.ToastActivity;
+import com.example.mytakeout.ui.activity.ViewPagerTestActivity;
 import com.example.mytakeout.ui.activity.ViewsActivity;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
         mDatas.add("Toast");
         mDatas.add("LeakCanary");
         mDatas.add("自定义控件");
+        mDatas.add("viewpage + fragment");
         MeAdapter adapter = new MeAdapter(mDatas, getActivity());
         adapter.setRVItemClickLisenter(this);
         //添加默认的分割线
@@ -75,6 +77,9 @@ public class MeFragment extends BaseFragment implements RVItemClickLisenter {
                 break;
             case 4:
                 startActivity(new Intent(getActivity(), ViewsActivity.class));
+                break;
+            case 5:
+                startActivity(new Intent(getActivity(), ViewPagerTestActivity.class));
                 break;
         }
     }

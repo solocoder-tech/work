@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.TypedValue;
 
+import com.example.mytakeout.utils.LogUtils;
+
 import java.nio.ByteBuffer;
 
 /**
@@ -20,16 +22,18 @@ public class MyBitmapFactory {
      */
     public static Bitmap createMyBitmap(byte[] data, int width, int height) {
         int[] colors = convertByteToColor(data);
+
         if (colors == null) {
             return null;
         }
-
+        LogUtils.e("createMyBitmap====" + colors.length);
         Bitmap bmp = null;
 
         try {
             bmp = Bitmap.createBitmap(colors, 0, width, width, height,
                     Bitmap.Config.ARGB_8888);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
 
@@ -45,7 +49,6 @@ public class MyBitmapFactory {
         if (size == 0) {
             return null;
         }
-
 
         // 理论上data的长度应该是3的倍数，这里做个兼容
         int arg = 0;
@@ -77,36 +80,6 @@ public class MyBitmapFactory {
         }
 
         return color;
-    }
-
-
-    public static byte[] bitmap2RGB(Bitmap bitmap) {
-
-        if (bitmap == null) {
-
-            return null;
-        }
-
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
-        int size = width * height;
-        int pixels[] = new int[size];
-
-        byte screenByte[] = new byte[size];
-
-        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-
-        for (int i = 0; i < width * height; i++) {
-            shortToByteArray1((short) pixels[i], screenByte, i * 2);
-        }
-
-        return screenByte;
-    }
-
-    public static int shortToByteArray1(short i, byte[] data, int offset) {
-        data[offset + 1] = (byte) (i >> 8 & 255);
-        data[offset] = (byte) (i & 255);
-        return offset + 2;
     }
 
     /**
@@ -167,6 +140,63 @@ public class MyBitmapFactory {
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inTargetDensity = value.density;
         return BitmapFactory.decodeResource(resources, id, opts);
+    }
+
+    public static Bitmap decodeFrameToBitmap(byte[] frame) {
+        int[] colors = convertByteToColor2(frame);
+        if (colors == null) {
+            return null;
+        }
+        Bitmap bmp = Bitmap.createBitmap(colors, 0, 640, 640, 480, Bitmap.Config.ARGB_8888);
+        return bmp;
+    }
+
+    // 将纯RGB数据数组转化成int像素数组
+    public static int[] convertByteToColor2(byte[] data) {
+        int size = data.length;
+        if (size == 0) {
+            return null;
+        }
+
+        int arg = 0;
+        if (size % 3 != 0) {
+            arg = 1;
+        }
+
+        int[] color = new int[size / 3 + arg];
+        int red, green, blue;
+
+        if (arg == 0) {
+            for (int i = 0; i < color.length; ++i) {
+                red = convertByteToInt(data[i * 3]);
+                green = convertByteToInt(data[i * 3 + 1]);
+                blue = convertByteToInt(data[i * 3 + 2]);
+
+                color[i] = (red << 16) | (green << 8) | blue | 0xFF000000;
+            }
+        } else {
+            // 获取RGB分量值通过按位或生成int的像素值
+            for (int i = 0; i < color.length - 1; ++i) {
+                red = convertByteToInt(data[i * 3]);
+                green = convertByteToInt(data[i * 3 + 1]);
+                blue = convertByteToInt(data[i * 3 + 2]);
+                color[i] = (red << 16) | (green << 8) | blue | 0xFF000000;
+            }
+
+            color[color.length - 1] = 0xFF000000;
+        }
+
+        return color;
+    }
+
+    // 将一个byte数转成int
+// 实现这个函数的目的是为了将byte数当成无符号的变量去转化成int
+    public static int convertByteToInt(byte data) {
+
+        int heightBit = (int) ((data >> 4) & 0x0F);
+        int lowBit = (int) (0x0F & data);
+
+        return heightBit * 16 + lowBit;
     }
 
 }

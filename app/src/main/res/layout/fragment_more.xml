@@ -4,15 +4,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<com.example.mytakeout.ui.views.PortDuffXfermode-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:gravity="center" />-->
     <Button
         android:id="@+id/btn_anim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:text="hahahh"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
+
+    <com.example.mytakeout.ui.views.RotateImageView
+        android:id="@+id/rotate_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.mytakeout.ui.views.RotateTableView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/parentRl"
+        android:layout_width="match_parent"
+        android:layout_height="320dip"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/layoutVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff000000"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image_result"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:visibility="gone"
+        android:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/image_result01"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"/>
+
 </LinearLayout>

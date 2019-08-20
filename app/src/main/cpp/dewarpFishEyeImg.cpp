@@ -10,7 +10,6 @@ const double PI = 3.1415926;
 const float Cx = 1280 / 2;
 const float Cy = 960 / 2;
 const double HalfFov = 40;
-const float Radius = 511;
 
 #define TAG    "xxxx"
 #define LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,TAG,__VA_ARGS__)
@@ -88,9 +87,6 @@ float *rectifyMap2(
     memset(pMapData, 0, sizeof(float) * ImgWidth * ImgHeight * 2);
 
     double radianAngle;
-
-//	int outHeight = Radius;
-//	int outWidth = Radius * sin(HalfFov*PI / 180.0) * 2;
 
     //xÖáÐý×ª¾ØÕó
     radianAngle = angleX * PI / 180.0;

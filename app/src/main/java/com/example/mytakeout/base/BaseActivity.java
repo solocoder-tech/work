@@ -21,6 +21,7 @@ import com.example.mytakeout.R;
 import com.example.mytakeout.modle.net.bean.EventScanResult;
 import com.example.mytakeout.net.Api;
 import com.example.mytakeout.net.RetrofitUtils;
+import com.example.mytakeout.utils.ImmersionBarUtils;
 import com.example.mytakeout.utils.LogUtils;
 import com.example.mytakeout.utils.UIUtils;
 
@@ -60,6 +61,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         AppManager.getInstance().addActivity(this);
         setContentView(R.layout.activity_base);
+        ImmersionBarUtils.setImmersionBar(this, R.color.color_ff3190E8, false);
         mContainer = (FrameLayout) findViewById(R.id.content_container);
         startusBarTv = (TextView) findViewById(R.id.replace_status_bar);
         titelRl = (RelativeLayout) findViewById(R.id.title);
@@ -149,6 +151,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     public void finishActivity() {
