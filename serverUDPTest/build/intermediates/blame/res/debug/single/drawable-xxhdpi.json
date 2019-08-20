@@ -2,5 +2,9 @@
     {
         "merged": "D:\\myproject\\serverUDPTest\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
         "source": "D:\\myproject\\serverUDPTest\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\mywork\\MyTakeout\\serverUDPTest\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "F:\\mywork\\MyTakeout\\serverUDPTest\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     }
 ]

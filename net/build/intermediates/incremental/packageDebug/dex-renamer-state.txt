@@ -1,0 +1,4 @@
+#Mon Aug 19 22:41:37 CST 2019
+base.0=D\:\\myproject\\net\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+renamed.0=classes.dex
+file.0=D\:\\myproject\\net\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

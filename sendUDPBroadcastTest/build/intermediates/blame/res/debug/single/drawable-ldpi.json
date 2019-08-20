@@ -1,5 +1,9 @@
 [
     {
+        "merged": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
+        "source": "F:\\mywork\\MyTakeout\\sendUDPBroadcastTest\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\myproject\\sendUDPBroadcastTest\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
         "source": "D:\\myproject\\sendUDPBroadcastTest\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
     }
