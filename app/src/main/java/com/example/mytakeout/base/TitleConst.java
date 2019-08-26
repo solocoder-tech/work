@@ -7,4 +7,5 @@ package com.example.mytakeout.base;
  */
 public interface TitleConst {
     String TITLE_VIEWPAGER = "Viewpager";
+    String TITLE_JNI = "jni";
 }

@@ -17,6 +17,12 @@
         android:text="@string/activity_viewpaer_carousel"/>
 
     <Button
+        android:id="@+id/app_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="画廊效果"/>
+
+    <Button
         android:id="@+id/app_vp_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -56,6 +56,15 @@
         <activity
             android:name=".ui.activity.ViewPagerTestActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ViewPagerInstuctorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ViewPagerCarouselActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.ViewPagerGralleryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

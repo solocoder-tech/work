@@ -104,4 +104,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 
+    //轮播图 banner
+    compile 'com.youth.banner:banner:1.4.10'  //最新版本
 }

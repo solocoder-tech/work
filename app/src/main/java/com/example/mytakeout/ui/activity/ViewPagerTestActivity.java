@@ -1,5 +1,6 @@
 package com.example.mytakeout.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -35,15 +36,20 @@ public class ViewPagerTestActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.app_inductor, R.id.app_carousel, R.id.app_vp_fragment})
+    @OnClick({R.id.app_inductor, R.id.app_carousel, R.id.app_vp_fragment,R.id.app_gallery})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.app_inductor:
+                startActivity(new Intent(this, ViewPagerInstuctorActivity.class));
                 break;
             case R.id.app_carousel:
+                startActivity(new Intent(this, ViewPagerCarouselActivity.class));
+                break;
+            case R.id.app_gallery:
+                startActivity(new Intent(this, ViewPagerGralleryActivity.class));
                 break;
             case R.id.app_vp_fragment:
-                break;
+            break;
         }
     }
 }

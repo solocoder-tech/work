@@ -103,8 +103,8 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView, Home
      * @param datas
      */
     private void initItems(List<HomeBean> datas) {
-        HomeBean homeBean = datas.get(0);
-        homeBean.setTitle(TitleConst.TITLE_VIEWPAGER);
+        datas.get(0).setTitle(TitleConst.TITLE_VIEWPAGER);
+        datas.get(1).setTitle(TitleConst.TITLE_JNI);
     }
 
     /**
@@ -127,7 +127,7 @@ public class HomeFragment extends BaseFragment implements HomeFragmentView, Home
         switch (homeBean.getTitle()) {
             case TitleConst.TITLE_VIEWPAGER:
                 intent = new Intent(getActivity(), ViewPagerTestActivity.class);
-                intent.putExtra("title",TitleConst.TITLE_VIEWPAGER);
+                intent.putExtra("title", TitleConst.TITLE_VIEWPAGER);
                 startActivity(intent);
                 break;
             default:
